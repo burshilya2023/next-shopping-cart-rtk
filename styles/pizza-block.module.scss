@@ -1,0 +1,116 @@
+.pizza_block_wrapper{
+  
+    position: relative;
+} 
+.pizza_block_favorite{
+  z-index: 99;
+   position: absolute;
+  top: 210px;
+  left: 1px;
+  padding: 15px;
+  border-radius: 50%;
+  &:hover{
+    background-color: rgba(198, 0, 0, 0.336);
+    cursor: pointer;
+  }
+  @media(max-width:767px){
+    top: 170px;
+    left: 5px;
+  }
+}
+.pizza_block{
+    border-radius: 12px;
+    overflow: hidden;
+    text-align: center;
+     margin-bottom: 65px;
+     transition: all 0.2s ease-in-out;
+     position: relative;
+     .pizza_block_img{
+      transition: all 0.3s ease-in-out;
+         &:hover {
+             transform: scale(1.05);
+          }
+          @media(max-width:767px){
+            width: 200px;
+            height: 200px;
+          }
+       }
+ }
+
+ .pizza_block_title{
+    font-size: 1rem;
+    margin-top: 2rem;
+    height: 60px;
+    font-weight: 900;
+    letter-spacing: 1%;
+    
+ 
+ }
+ .pizza_block__price_wrapper{
+  background-color: hsl(207, 26%, 17%);
+  position: absolute;
+  padding: 10px;
+  right: 8px;
+  border-radius: 1rem 1rem 0rem 0rem;
+  top: 200px;
+  @media(max-width:767px){
+    top: 160px;
+    right: 12px;
+  }
+  .pizza_block__price{
+     border-radius: 0.4rem;
+     font-weight: var(--fw-bold);
+     color: white;
+     padding: 5px 10px;
+     width: max-content;
+     background-color: var(--colors-text-count-price);
+     
+   }
+ }
+ .pizza_block_selector {
+    display: flex;
+    background-color: var(--color-bg);
+    border-radius: 10px;
+    flex-direction: column;
+    padding: 6px;
+
+    ul {
+      display: flex;
+      flex: 1;
+
+      &:first-of-type {
+        margin-bottom: 6px;
+      }
+
+      li {
+        padding: 8px;
+        flex: 1;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 14px;
+       
+        &.active {
+          background: var(--colors-ui-base);
+          box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
+          border-radius: 5px;
+          cursor: auto;
+        }
+      }
+    }
+  }
+
+  .pizza_block_bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+
+  .pizza_block_price {
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 27px;
+    letter-spacing: 0.015em;
+  
+  }
+

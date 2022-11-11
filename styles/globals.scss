@@ -1,0 +1,234 @@
+@import-normalize;
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  /* Typography */
+  --family: 'Nunito Sans', sans-serif;
+  --fs-sm: 14px;
+  --fs-md: 16px;
+  --fw-light: 300;
+  --fw-normal: 600;
+  --fw-bold: 800;
+  /* Other */
+  --radii: 0.5rem;
+}
+
+body[data-theme='dark'] {
+  --colors-text: hsl(0, 0%, 100%);
+  --colors-bg: hsl(207, 26%, 17%);
+  --colors-bg-active: hsl(209, 66%, 20%);
+  --colors-ui-base: hsl(209, 23%, 22%);
+  --colors-text-count-price:rgb(152, 12, 216);
+  --shadow: rgba(245, 245, 245, 0.2) 0 0 8px;
+} 
+body[data-theme='light'] {
+  --colors-text: hsl(200, 15%, 8%);
+  --colors-bg: hsl(0, 0%, 98%);
+  --colors-bg-active: hsl(0, 1%, 37%);
+  --colors-ui-base: hsl(0, 0%, 86%);
+  --colors-text-count-price:rgb(0, 163, 163);
+  --shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+html, body {
+  height: 100%;
+  scrollbar-color: #458245 #714826; /* «цвет ползунка» «цвет полосы скроллбара» */
+  scrollbar-width: thin;  /* толщина auto | thin | none */
+}
+::-webkit-scrollbar {
+  width: 15px; /* ширина для вертикального скролла */
+  height: 8px; /* высота для горизонтального скролла */
+  background-color: #143861;
+}
+/* ползунок скроллбара */
+::-webkit-scrollbar-thumb {
+  background-color: #493441;
+  border-radius: 9em;
+  box-shadow: inset 1px 1px 10px #f3faf7;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--family);
+  color: var(--colors-text);
+  font-weight: var(--fw-light);
+  background-color: var(--colors-bg);
+  overflow-x: hidden;
+  opacity: 1;
+  width: 100%;
+  position: relative;
+  line-height: 1.65;
+}
+.icon{
+    color: var(--colors-text);
+    font-size: 50px;
+}
+*:focus {
+  outline: none;
+}
+
+
+
+
+.img-responsive {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/*# sourceMappingURL=main.css.map */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+*,*::before,*::after {
+  box-sizing: border-box;
+}
+
+ul {
+  padding-left: 0;
+  li{
+    list-style-type:none;
+  }
+}
+.button {
+  background-color: var(--colors-bgs);
+  border: 1px solid gray;
+  padding: 10px;
+  font-weight: var(--fw-bold);
+  border-radius: 1rem;
+  color: var(--colors-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  display: flex;
+  gap: 10px;
+  &:hover{
+    background: var(--colors-ui-base);
+    color: var(--colors-text);
+  }
+  span{   
+    background: var(--colors-text-count-price);
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var();
+    font-weight: (var(--fw-bold));
+  }
+}
+.button--outline{
+  border: 3px solid var(--colors-ui-base);
+}
+.ModeSwitcher{
+  color: var(--colors-text);
+  font-size: var(--fs-sm);
+  cursor: pointer;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  text-transform: capitalize;
+
+}
+
+.container{
+  width: min(calc(90% - 2rem),60rem);
+  margin-inline:auto; 
+}
+.flex{
+  padding-top: 5vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid black;
+}
+.flexColumn{
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+main{
+  margin: 150px 0vh;
+   min-height: 100vh;
+}
+.footer{
+  box-shadow: var(--shadow);
+
+  height: 5vh;
+  color: var(--colors-text);
+  background-color: var(--colors-bg);
+  @media(max-width:1007px){
+    padding-bottom: 13vh;
+  }
+}
+
+
+
+.heart{
+  height: 10px;
+  width: 10px;
+  background-color: red;
+  transform: rotate((-45deg));
+  animation: heart 3s linear infinite;
+}
+
+@keyframes heart{
+  0%{
+      transform:  rotate(-45deg) scale(1.12);
+  }
+  40%{
+      transform:  rotate(-45deg) scale(1.05);
+  }
+  80%{
+      transform:  rotate(-45deg) scale(1);
+  }
+  100%{
+      transform:  rotate(-45deg) scale(0.9);
+  }
+}
+.heart::before{
+  content: '';
+  position: absolute;
+  height: 10px;
+  width: 10px;
+  background-color: #f20044;
+  top: -50%;
+  border-radius: 50px;
+  box-shadow: -10px 10px 90px #f20044;
+}  
+.heart::after{
+  content: '';
+  position: absolute;
+  height: 10px;
+  width: 10px;
+  background-color: #f20044;
+  box-shadow: -10px 0px 90px #f20044;
+  right: -50%;
+  border-radius: 50px;
+} 
+.heart--large{
+  height:250px;
+  width: 250px;
+}
+.heart--large::before{
+  height: 250px;
+  width: 250px;
+  border-radius: 50%;
+}
+.heart--large::after{
+  height: 250px;
+  width: 250px;
+  border-radius: 50%;
+}
+@import '~antd/dist/antd.css';

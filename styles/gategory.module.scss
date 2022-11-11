@@ -1,0 +1,29 @@
+.category{
+  
+
+    ul{
+        display: flex;
+        gap: 10px;
+        
+        
+        li{
+            background: var(--colors-ui-base);
+            padding: 0 16px;
+            height: 36px;
+            font-size: 16px;
+            line-height: 36px;
+            border-radius: 18px;
+            cursor: pointer;
+            &:hover{
+                background-color: var(--colors-text-count-price);
+                color: white;
+            }
+        }
+    }
+    .active{
+        background-color: var(--colors-text-count-price);
+        
+        font-weight: var(--fw-bold);
+        color: var(--colors-text);
+    } 
+}
