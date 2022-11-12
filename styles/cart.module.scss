@@ -1,6 +1,7 @@
 .cartWrapper{
     display:flex;
     justify-content: space-between;
+    align-items: center;
     gap: 20px;
     padding-bottom: 20vh;
    
@@ -34,15 +35,21 @@
 .cart_bottom{
     position: sticky;
     display: grid;
-    margin-top:250px;
+ 
     top: 100px;
     gap: 10px;
-    height: max-content;
+  
     padding: 13px;
     font-weight: 900;
     color: white;
     background-color: rgba(0, 0, 0, 0.6);
-    
+    @media(max-width:767px){
+        gap: 0;
+     
+    }
+
+
+   
     .cart_count_totalPrice{
         @media(max-width:767px){
             display: flex;
@@ -59,8 +66,25 @@
     @media(max-width:767px){
         margin-top:0px;
         position: fixed;
-        top: 73vh;
-        width: 90%;
-       
+        top: 75vh;
+        width: 100%;
+      
     }
+ 
+}
+
+.cart__buy_cart{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    button {
+       
+    box-shadow: 
+    rgba(6, 59, 174, 0.25) 0px 54px 55px,
+     rgba(6, 59, 174, 0.12) 0px -12px 30px,
+     rgba(6, 59, 174, 0.12) 0px 4px 6px,
+      rgba(6, 59, 174, 0.17) 0px 12px 13px,
+       rgba(6, 59, 174, 0.09) 0px -3px 5px;
+ }
 }

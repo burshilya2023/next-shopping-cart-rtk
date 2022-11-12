@@ -36,7 +36,7 @@ export const CartItem: React.FC<CartItemProps> = React.memo(
     return (
       <div className={styles.cartItemWrapper}>
         <div className={styles.cart_item_img}>
-          <Image width={150} height={150} src={imageUrl} alt="Pizza" />
+          <Image width={"100"} height={"100"} src={imageUrl} alt="Pizza" />
           <div className={styles.cart_item_info}>
             <p>{title}</p>
             <p>

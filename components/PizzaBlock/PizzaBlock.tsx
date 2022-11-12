@@ -5,6 +5,8 @@ import { useAction } from "../../hooks/useAction";
 import { CartItem } from "../../store/types";
 import Image from "next/image";
 import Heart from "../heart";
+import { IoMdHeartEmpty } from "react-icons/io";
+import { BsHeart } from "react-icons/bs";
 const typeNames = ["thin", "traditional"];
 type PizzaBlockProps = {
   id: string;
@@ -34,9 +36,26 @@ export const PizzaBlock: React.FC<PizzaBlockProps> = ({
     return result;
   };
   const totalCount = TotalCount(); //number
-
+  const [toggleFavorite, seTtoggleFavorite] = React.useState(true);
+  const [favoriteState, setfavoriteState] = React.useState<any>([]);
   const [activeType, setActiveType] = React.useState(0);
   const [activeSize, setActiveSize] = React.useState(0);
+  console.log("favoriteState", favoriteState);
+
+  const addToFavorite = () => {
+    seTtoggleFavorite(!toggleFavorite);
+    const date = String(new Date());
+
+    const item: any = {
+      id,
+      date: date,
+      title,
+      price: resultPrice,
+      imageUrl,
+    };
+    setfavoriteState(item);
+  };
+
   const createPrice = (price: number, activeSize: number) => {
     if (activeSize == 0) {
       return price;
@@ -70,14 +89,22 @@ export const PizzaBlock: React.FC<PizzaBlockProps> = ({
 
   return (
     <div className={styles.pizza_block_wrapper}>
-      <div className={styles.pizza_block_favorite}>
-        <Heart />
+      <div
+        onClick={addToFavorite}
+        className={
+          toggleFavorite
+            ? `${styles.pizza_block_favorite}`
+            : `${styles.pizza_block_favorite}
+               ${styles.favorite_active}`
+        }
+      >
+        <BsHeart />
       </div>
       <div className={styles.pizza_block}>
         <Link key={id} href={`/${id}`}>
           <Image
-            height={250}
-            width={250}
+            height={"100"}
+            width={"100"}
             className={styles.pizza_block_img}
             src={imageUrl}
             alt="Pizza"

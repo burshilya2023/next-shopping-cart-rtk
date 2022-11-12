@@ -43,16 +43,16 @@ const Navbar: FC = () => {
           </motion.div>
           {pathname === "/" ? <Search /> : <Link href="/">GO BACK</Link>}
           <motion.div
-            initial={{ x: 250 }}
-            animate={{ x: 0 }}
+            // initial={{ x: 250 }}
+            // animate={{ x: 0 }}
             className={styles.nav__right}
           >
             <i>
               <ThemeSwitcher /> {/* //!Switch Theme */}
             </i>
             <motion.div
-              initial={{ x: 250 }}
-              animate={{ x: 0 }}
+              // initial={{ x: 250 }}
+              // animate={{ x: 0 }}
               className={styles.links}
             >
               <Link href="/favorite">

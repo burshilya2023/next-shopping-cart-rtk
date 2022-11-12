@@ -27,10 +27,12 @@ const ModalWindow: React.FC<modalProps> = ({ title, children }) => {
         {title}
       </Button>
       <Modal
-        title="Basic Modal"
+        title={title}
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
+        footer={null}
+        maskClosable={true}
       >
         {children}
       </Modal>

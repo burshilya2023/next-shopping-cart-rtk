@@ -9,6 +9,7 @@ import { CartItem } from "../../components/CartBlock/CartItem";
 import Link from "next/link";
 import ModalWindow from "../../components/ModalWindow";
 import { useRouter } from "next/router";
+import { Button } from "antd";
 
 const Cart: NextPage = () => {
   const { clearItems } = useAction();
@@ -67,11 +68,11 @@ const Cart: NextPage = () => {
                 </span>
               </div>
 
-              <ModalWindow title="оплатить корзину">
-                <div>
+              <ModalWindow title="pay to cart">
+                <div className={styles.modalWrapper}>
                   <div className={styles.cart_count_totalPrice}>
                     <span>
-                      Total pizzas: <p>{totalCount} pc</p>
+                      Total pizzas: <p>{totalCount} count</p>
                     </span>
                     <span>
                       Order amount: <p>{totalPrice} $</p>
@@ -79,15 +80,23 @@ const Cart: NextPage = () => {
                   </div>
 
                   <div>
-                    <button className="button button--outline">
-                      {auth ? <h1>Buy</h1> : <Link href="/Login">Buy</Link>}
-                    </button>
+                    <div>
+                      {auth ? (
+                        <p>need log in</p>
+                      ) : (
+                        <div className={styles.cart__buy_cart}>
+                          <Link href="/Login">
+                            <Button color="danger">
+                              registration required
+                            </Button>
+                          </Link>
+                          <Button color="primary">or give cardNumber</Button>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
               </ModalWindow>
-              <Link href="/" className="button">
-                Go back
-              </Link>
             </div>
           </div>
         </div>
