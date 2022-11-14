@@ -12,23 +12,20 @@ import Heart from "../heart";
 
 const Navbar: FC = () => {
   const { pathname } = useRouter();
-
-  const isMounted = React.useRef(false);
-
-  const { itemsCart, totalPrice, totalCount } = useTypedSelector(
-    (state) => state.cart
-  );
+  // const isMounted = React.useRef(false);
+  //@ts-ignore
+  const { itemsCart, totalPrice } = useTypedSelector((state) => state.cart);
   const { itemsFavorite } = useTypedSelector((state) => state.favorite);
   const lenghtItemsFavorite = itemsFavorite.length;
   const lenghtCart = itemsCart?.length; //or all pizza down
 
-  React.useEffect(() => {
-    if (isMounted.current) {
-      const json = JSON.stringify(itemsCart);
-      localStorage.setItem("cart", json);
-    }
-    isMounted.current = true;
-  }, [itemsCart]);
+  // React.useEffect(() => {
+  //   if (isMounted.current) {
+  //     const json = JSON.stringify(itemsCart);
+  //     localStorage.setItem("cart", json);
+  //   }
+  //   isMounted.current = true;
+  // }, [itemsCart]);
 
   return (
     <nav className={styles.NavBarWrapper}>
