@@ -1,5 +1,5 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit"
-import CartSlice from "../slices/CartSlice/CartSlice"
+import cartSlice from "../slices/CartSlice/CartSlice"
 
 import filterSlice from "../slices/filterSlice/filterSlice"
 import { themeReducer } from "../slices/switchThemeSlice/themeSlice"
@@ -13,7 +13,7 @@ export const store = configureStore({
         // [fetchPizzas.reducerPath]:fetchPizzas.reducer,//?for RTK query then
         pizza: pizzaSlice,
         filter: filterSlice,
-        cart: CartSlice,
+        cart: cartSlice,
         theme: themeReducer,
     },
     // middleware:()=>getDefaultMiddleware().concat(fetchPizzas.middleware)
