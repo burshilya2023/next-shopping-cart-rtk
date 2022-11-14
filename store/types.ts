@@ -53,7 +53,7 @@ export type PizzaApi = {
     sort: Sort; //filterSlice
   }
   //!add Pizza in Cart
-  export type CartItem = {
+  export type CartItemType = {
     id: string;
     date:string;
     title: string;
@@ -70,7 +70,7 @@ export type PizzaApi = {
   //!initialState CART (3/3)
   export interface CartSliceState {
     totalPrice: number;
-    itemsCart: CartItem[];
+    itemsCart: CartItemType[];
     totalCount:number;
   }
   

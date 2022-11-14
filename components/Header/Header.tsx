@@ -3,7 +3,7 @@ import { FC } from "react";
 import Navbar from "./Navbar";
 
 type HeadrProps = {
-  keywords?: any;
+  keywords?: string;
 };
 
 const Header: FC<HeadrProps> = () => (

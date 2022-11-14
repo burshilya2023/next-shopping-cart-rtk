@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { CartItem, CartSliceState } from '../../store/types';
+import { CartItemType, CartSliceState } from '../../store/types';
 import { calcTotalCount, calcTotalPrice } from '../../utils/calcTotalCart';
 import { getCartFromLS } from '../../utils/getCartFromLS';
 
@@ -13,7 +13,7 @@ const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    addItem(state, action: PayloadAction<CartItem>) {
+    addItem(state, action: PayloadAction<CartItemType>) {
       const findItem = state.itemsCart.find((obj) => obj.id === action.payload.id
         && obj.type === action.payload.type && obj.size === action.payload.size);
       if (findItem) {
@@ -28,7 +28,7 @@ const cartSlice = createSlice({
       state.totalPrice = calcTotalPrice(state.itemsCart);
       state.totalCount = calcTotalCount(state.itemsCart);
     },
-    plusItem(state, action: PayloadAction<CartItem>) {
+    plusItem(state, action: PayloadAction<CartItemType>) {
       const findItem = state.itemsCart.find((obj) => obj.id === action.payload.id
         && obj.type === action.payload.type && obj.size === action.payload.size);
       if (findItem) {
@@ -36,7 +36,7 @@ const cartSlice = createSlice({
       }
       state.totalPrice = calcTotalPrice(state.itemsCart);
     },
-    minusItem(state, action: PayloadAction<CartItem>) {
+    minusItem(state, action: PayloadAction<CartItemType>) {
       const findItem = state.itemsCart.find((obj) => obj.id === action.payload.id
         && obj.type === action.payload.type && obj.size === action.payload.size);
       if (findItem) {
@@ -44,7 +44,7 @@ const cartSlice = createSlice({
       }
       state.totalPrice = calcTotalPrice(state.itemsCart);
     },
-    removeItem(state, action: PayloadAction<CartItem>) {
+    removeItem(state, action: PayloadAction<CartItemType>) {
       state.itemsCart = state.itemsCart.filter((obj) =>
         obj.date !== action.payload.date)
       state.totalPrice = calcTotalPrice(state.itemsCart);

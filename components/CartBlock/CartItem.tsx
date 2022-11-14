@@ -5,6 +5,7 @@ import styles from "../../styles/cartItem.module.scss";
 import { IoMdAddCircle } from "react-icons/io";
 import { AiOutlineMinusCircle } from "react-icons/ai";
 import { CiCircleRemove } from "react-icons/ci";
+import { CartItemType } from "../../store/types";
 type CartItemProps = {
   id: string;
   title: string;
@@ -13,7 +14,7 @@ type CartItemProps = {
   price: number; //price
   count: number;
   imageUrl: string;
-  item: any;
+  item: CartItemType;
 };
 
 export const CartItem: React.FC<CartItemProps> = React.memo(

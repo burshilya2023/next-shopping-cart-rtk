@@ -13,9 +13,9 @@ import { fetchPizzas } from "../fetchApi/Pizza.api";
 import { useAppDispatch } from "../store/store";
 import Description from "../components/Description";
 const Home: NextPage = () => {
-  const { setCategoryId, setSearchValue } = useAction();// actionCreators
-  const { items, status } = useTypedSelector((state) => state.pizza);//fetch pizza
-  const { itemsCart } = useTypedSelector((state) => state.cart);//for count to button add
+  const { setCategoryId, setSearchValue } = useAction(); // actionCreators
+  const { items, status } = useTypedSelector((state) => state.pizza); //fetch pizza
+  const { itemsCart } = useTypedSelector((state) => state.cart); //for count to button add
 
   const dispatch = useAppDispatch();
 
@@ -24,14 +24,13 @@ const Home: NextPage = () => {
     sort,
     currentPage = 1,
     searchValue = "",
-  } = useTypedSelector((state) => state.filter);//?currentPage?/params category/sort/searchValue
+  } = useTypedSelector((state) => state.filter); //?currentPage?/params category/sort/searchValue
 
   const getPizzas = async () => {
-    
     const sortBy = sort.sortProperty.replace("-", ""); //popular/price/alphabet
     const order = sort.sortProperty.includes("-") ? "asc" : "desc"; //min/max
     const category = categoryId > 0 ? String(categoryId) : ""; // 1-2-3-4-5
-    const search = searchValue;//any
+    const search = searchValue; //anyText
     dispatch(
       fetchPizzas({
         //fetch get
@@ -51,7 +50,7 @@ const Home: NextPage = () => {
   const onChangeCategory = useCallback((i: number): void => {
     setCategoryId(i);
   }, []);
-//!func#2
+  //!func#2
   const TotalCountPizzaAdd = (id: string): number => {
     const resultCount = itemsCart.filter((obj) => obj.id === id);
     const amount = resultCount?.reduce((c, cart) => {
@@ -59,7 +58,7 @@ const Home: NextPage = () => {
     }, 0);
     return amount;
   };
- 
+
   //!map pizzas
   const pizzas = items.map((obj: PizzaApi, index: number) => (
     <PizzaBlock
@@ -69,12 +68,11 @@ const Home: NextPage = () => {
       TotalCountPizzaAdd={TotalCountPizzaAdd}
     />
   ));
-//!map skeleton
+  //!map skeleton
   const skeletons = [...new Array(6)].map((_, index) => (
     <Skeleton key={index} />
   ));
 
-   
   return (
     <Layout keywords={"main page"}>
       <div className="container">
@@ -97,19 +95,25 @@ const Home: NextPage = () => {
                 <div>
                   <h2>sorry 😕</h2>
                   <p>
-                  Unfortunately, it was not possible to get pizza. Try
-                  try again later.
+                    Unfortunately, it was not possible to get pizza. Try try
+                    again later.
                   </p>
                 </div>
               ) : (
                 <div className={styles.home__pizza_skeletons_wrapper_flex}>
-                  {status === "loading" ? skeletons : pizzas}{/* //!pizzasBlock */}
+                  {status === "loading" ? skeletons : pizzas}
+                  {/* //!pizzasBlock */}
                 </div>
               )}
               {items.length === 0 ? (
-                <div style={{paddingBottom:'200px'}}>
+                <div style={{ paddingBottom: "200px" }}>
                   <h3>there are no pizzas with this name</h3>
-                  <button className="button button--outline" onClick={() => setSearchValue("")}>back</button>
+                  <button
+                    className="button button--outline"
+                    onClick={() => setSearchValue("")}
+                  >
+                    back
+                  </button>
                 </div>
               ) : null}
             </div>
@@ -117,7 +121,7 @@ const Home: NextPage = () => {
         </div>
         {/* //! under development*/}
         <Description />
-         {/* //! under development*/}
+        {/* //! under development*/}
       </div>
     </Layout>
   );

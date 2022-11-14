@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 import styles from "../../styles/pizza-block.module.scss";
 import { useAction } from "../../hooks/useAction";
-import { CartItem, FavoriteItem } from "../../store/types";
+import { CartItemType, FavoriteItem } from "../../store/types";
 import Image from "next/image";
 import Heart from "../heart";
 import { IoMdHeartEmpty } from "react-icons/io";
@@ -80,7 +80,7 @@ export const PizzaBlock: React.FC<PizzaBlockProps> = ({
   //start //!add piiza to card
   const onClickAdd = () => {
     const date = String(new Date());
-    const item: CartItem = {
+    const item: CartItemType = {
       id,
       date: date,
       title,

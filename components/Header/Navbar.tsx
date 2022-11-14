@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import Link from "next/link";
+//@ts-ignore
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import styles from "../../styles/Navbar.module.scss";

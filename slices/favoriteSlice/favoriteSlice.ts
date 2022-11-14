@@ -41,7 +41,7 @@ const favoriteSlice = createSlice({
           obj.id !== action.payload)      
       },
   
-      clearAllFavorite(state,action: PayloadAction<any>){
+      clearAllFavorite(state,action: PayloadAction<FavoriteItem[]>){
         state.itemsFavorite = action.payload
       },
       clearAllItem(state){

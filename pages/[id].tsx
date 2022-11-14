@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import styles from "../styles/pizza.id.module.scss";
 import axios from "axios";
-import { motion } from "framer-motion";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Layout from "../components/Layout";
+//@ts-ignore
+import { motion } from "framer-motion";
 interface IfullPizza {
   imageUrl: string;
   title: string;
@@ -74,6 +75,7 @@ const FullPizza: React.FC = () => {
         <div className={styles.wrapperIdPizza}>
           <div className={styles.Pizza__slider_descr}>
             {/* ======Slider===== */}
+
             <div ref={carouselImage} className={styles.caroulse}>
               <motion.div
                 drag="x"

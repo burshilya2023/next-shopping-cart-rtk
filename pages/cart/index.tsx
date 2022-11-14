@@ -10,6 +10,7 @@ import Link from "next/link";
 import ModalWindow from "../../components/ModalWindow";
 import { useRouter } from "next/router";
 import { Button } from "antd";
+import { CartItemType } from "../../store/types";
 
 const Cart: NextPage = () => {
   const { clearItems } = useAction();
@@ -17,7 +18,7 @@ const Cart: NextPage = () => {
   const router = useRouter();
   const { totalPrice, itemsCart } = useTypedSelector((state) => state.cart);
   const totalCount = itemsCart.reduce(
-    (sum: number, item: any) => sum + item.count,
+    (sum: number, item: CartItemType) => sum + item.count,
     0
   );
   React.useEffect(() => {
@@ -54,7 +55,7 @@ const Cart: NextPage = () => {
               <div onClick={onClickClear} className={styles.button_clear}>
                 Empty the trash
               </div>
-              {itemsCart.map((item: any) => (
+              {itemsCart.map((item: CartItemType) => (
                 <CartItem key={item.date} item={item} {...item} />
               ))}
             </div>

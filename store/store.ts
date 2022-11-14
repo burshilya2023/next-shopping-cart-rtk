@@ -16,6 +16,7 @@ export const store = configureStore({
         filter: filterSlice,
         cart: CartSlice,
         theme: themeReducer,
+        favorite:favoriteSlice
     },
     // middleware:()=>getDefaultMiddleware().concat(fetchPizzas.middleware)
 })

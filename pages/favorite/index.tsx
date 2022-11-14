@@ -10,6 +10,7 @@ import { useAction } from "../../hooks/useAction";
 import { divide } from "lodash";
 import { useRouter } from "next/router";
 import { CiCircleRemove } from "react-icons/ci";
+import { FavoriteItem } from "../../store/types";
 
 const Favorite: NextPage = () => {
   const { itemsFavorite } = useTypedSelector((state) => state.favorite);
@@ -25,14 +26,14 @@ const Favorite: NextPage = () => {
       setTimeout(() => {
         // !Redirect
         router.push("/");
-      }, 3000);
+      }, 2000);
     }
-  }, [router]);
+  }, [router, itemsFavorite]);
 
   const clearItem = () => {
-    const result = itemsFavorite.filter((obj) => obj.toggle !== true);
-    // .map((obj) => obj.id);
-    console.log(result);
+    const result = itemsFavorite.filter(
+      (obj: FavoriteItem) => obj.toggle !== true
+    );
     clearAllFavorite(result);
   };
   if (!itemsFavorite.length) {
@@ -61,7 +62,7 @@ const Favorite: NextPage = () => {
             <button onClick={clearItem}>удалить выделенные</button>
           </div>
           <div className={styles.itemsFavorite_map}>
-            {itemsFavorite.map((item) => (
+            {itemsFavorite.map((item: FavoriteItem) => (
               <div
                 onClick={() => toggleItemFavority(item.id)}
                 className={
