@@ -1,7 +1,8 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit"
-import CartSlice from "../slices/CartSlice/CartSlice"
+import CartSlice from "../slices/cartSlice/CartSlice"
 
 import filterSlice from "../slices/filterSlice/filterSlice"
+import favoriteSlice from "../slices/favoriteSlice/favoriteSlice"
 import { themeReducer } from "../slices/switchThemeSlice/themeSlice"
 
 
@@ -14,6 +15,7 @@ export const store = configureStore({
         pizza: pizzaSlice,
         filter: filterSlice,
         cart: CartSlice,
+        favorite:favoriteSlice,
         theme: themeReducer,
     },
     // middleware:()=>getDefaultMiddleware().concat(fetchPizzas.middleware)

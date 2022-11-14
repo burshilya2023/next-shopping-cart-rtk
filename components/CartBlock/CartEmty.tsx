@@ -7,7 +7,7 @@ export const CartEmpty: React.FC = () => (
   <Layout keywords={"cartEmpty"}>
     <div className="container flexColumn">
       <h2>
-        The basket is empty <span>😕</span>
+        The cart is empty <span>😕</span>
       </h2>
       <p>
         Most likely, you haven't ordered pizza yet. <br />

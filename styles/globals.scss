@@ -160,18 +160,8 @@ ul {
 }
 main{
   margin: 150px 0vh;
-   min-height: 100vh;
 }
-.footer{
-  box-shadow: var(--shadow);
 
-  height: 5vh;
-  color: var(--colors-text);
-  background-color: var(--colors-bg);
-  @media(max-width:1007px){
-    padding-bottom: 13vh;
-  }
-}
 
 
 
