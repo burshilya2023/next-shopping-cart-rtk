@@ -20,7 +20,7 @@ const Navbar: FC = () => {
   );
   const { itemsFavorite } = useTypedSelector((state) => state.favorite);
   const lenghtItemsFavorite = itemsFavorite.length;
-  const lenghtCart = itemsCart.length; //or all pizza down
+  const lenghtCart = itemsCart?.length; //or all pizza down
 
   React.useEffect(() => {
     if (isMounted.current) {
