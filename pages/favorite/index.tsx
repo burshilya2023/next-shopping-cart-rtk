@@ -57,9 +57,9 @@ const Favorite: NextPage = () => {
         </div>
         <div className={styles.favoriteWrapper}>
           <div className={styles.favorite_deleteAll_deleteItem}>
-            <button onClick={clearAllItem}>удалить все</button>
+            <button onClick={clearAllItem}>delete all</button>
             <br />
-            <button onClick={clearItem}>удалить выделенные</button>
+            <button onClick={clearItem}>delete checked</button>
           </div>
           <div className={styles.itemsFavorite_map}>
             {itemsFavorite.map((item: FavoriteItem) => (
