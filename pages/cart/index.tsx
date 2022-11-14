@@ -15,6 +15,7 @@ const Cart: NextPage = () => {
   const { clearItems } = useAction();
   const [auth, setAuth] = React.useState(false); //!under development
   const router = useRouter();
+  //@ts-ignore
   const { totalPrice, itemsCart } = useTypedSelector((state) => state.cart);
   const totalCount = itemsCart.reduce(
     (sum: number, item: any) => sum + item.count,
