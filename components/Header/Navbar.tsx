@@ -18,6 +18,8 @@ const Navbar: FC = () => {
   const { itemsCart, totalPrice, totalCount } = useTypedSelector(
     (state) => state.cart
   );
+  const { itemsFavorite } = useTypedSelector((state) => state.favorite);
+  const lenghtItemsFavorite = itemsFavorite.length;
   const lenghtCart = itemsCart.length; //or all pizza down
 
   React.useEffect(() => {
@@ -53,10 +55,13 @@ const Navbar: FC = () => {
             <motion.div
               // initial={{ x: 250 }}
               // animate={{ x: 0 }}
-              className={styles.links}
+              className={styles.nav_links}
             >
               <Link href="/favorite">
                 <Heart />
+                <span className={styles.nav_links_count}>
+                  {lenghtItemsFavorite}
+                </span>
               </Link>
               <Link href="/cart">
                 <IconButton color="inherit">

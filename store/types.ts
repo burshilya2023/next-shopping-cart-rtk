@@ -74,4 +74,11 @@ export type PizzaApi = {
     totalCount:number;
   }
   
-  
+  export type FavoriteItem={
+    id:string,
+    date: string,
+    title:string,
+    price: number,
+    imageUrl:string,
+    toggle:boolean
+  }

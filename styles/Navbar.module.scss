@@ -27,10 +27,11 @@
         gap:20px;
     }
 
-    .links{
+    .nav_links{
         display: flex;
         align-items: center;
         justify-content: center;
+        position: relative;
         gap:20px;
           @media(max-width:1007px){
         position: fixed;
@@ -42,6 +43,12 @@
         justify-content: space-between;
         box-shadow: var(--shadow);
         background-color: var(--colors-bg);
+    }
+    .nav_links_count{
+        position: absolute;
+        top: -5px;
+        
+        font-size: 11px;
     }
     }
 }

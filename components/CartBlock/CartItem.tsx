@@ -67,7 +67,7 @@ export const CartItem: React.FC<CartItemProps> = React.memo(
             <div className={styles.cart_item_price}>
               <b>{price * count} $</b>
             </div>
-            <div className="cart_item-remove">
+            <div>
               <div onClick={onClickRemove} className="button">
                 <CiCircleRemove fontSize={24} style={{ background: "none" }} />
               </div>

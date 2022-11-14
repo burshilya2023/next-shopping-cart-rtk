@@ -2,11 +2,13 @@ import Link from "next/link";
 import React from "react";
 import styles from "../../styles/pizza-block.module.scss";
 import { useAction } from "../../hooks/useAction";
-import { CartItem } from "../../store/types";
+import { CartItem, FavoriteItem } from "../../store/types";
 import Image from "next/image";
 import Heart from "../heart";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { BsHeart } from "react-icons/bs";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { openNotification, openNotificationWithIcon } from "../Notification";
 const typeNames = ["thin", "traditional"];
 type PizzaBlockProps = {
   id: string;
@@ -29,31 +31,37 @@ export const PizzaBlock: React.FC<PizzaBlockProps> = ({
   types,
   TotalCountPizzaAdd,
 }) => {
-  const { addItem } = useAction();
-
+  const { addItem, addItemFavorite, removeItemFavorite } = useAction();
+  const { itemsFavorite } = useTypedSelector((state) => state.favorite);
   const TotalCount = () => {
     let result = TotalCountPizzaAdd(id);
     return result;
   };
   const totalCount = TotalCount(); //number
-  const [toggleFavorite, seTtoggleFavorite] = React.useState(true);
-  const [favoriteState, setfavoriteState] = React.useState<any>([]);
   const [activeType, setActiveType] = React.useState(0);
   const [activeSize, setActiveSize] = React.useState(0);
-  console.log("favoriteState", favoriteState);
+  const [toggle, setToggle] = React.useState(false);
+  const itemFavorite = itemsFavorite.find((obj) => obj.id === id);
 
   const addToFavorite = () => {
-    seTtoggleFavorite(!toggleFavorite);
     const date = String(new Date());
-
-    const item: any = {
+    const item: FavoriteItem = {
       id,
       date: date,
       title,
       price: resultPrice,
       imageUrl,
+      toggle: false,
     };
-    setfavoriteState(item);
+    if (toggle) {
+      removeItemFavorite(id);
+      setToggle(false);
+      openNotificationWithIcon("warning", title, "delete from favorite");
+    } else {
+      addItemFavorite(item);
+      setToggle(true);
+      openNotificationWithIcon("success", title, "favorite");
+    }
   };
 
   const createPrice = (price: number, activeSize: number) => {
@@ -83,7 +91,7 @@ export const PizzaBlock: React.FC<PizzaBlockProps> = ({
       count: 0,
     };
     addItem(item);
-    //!alert("pizza added");
+    openNotificationWithIcon("success", title, "cart");
   };
   //end //?add piizza to card
 
@@ -92,7 +100,7 @@ export const PizzaBlock: React.FC<PizzaBlockProps> = ({
       <div
         onClick={addToFavorite}
         className={
-          toggleFavorite
+          !itemFavorite
             ? `${styles.pizza_block_favorite}`
             : `${styles.pizza_block_favorite}
                ${styles.favorite_active}`

@@ -52,7 +52,7 @@ const Cart: NextPage = () => {
           <div className={styles.cartWrapper}>
             <div className={styles.cart}>
               <div onClick={onClickClear} className={styles.button_clear}>
-                Empty the trash
+                clear all cart
               </div>
               {itemsCart.map((item) => (
                 <CartItem key={item.date} item={item} {...item} />
