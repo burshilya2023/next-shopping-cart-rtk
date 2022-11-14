@@ -15,7 +15,6 @@ const Cart: NextPage = () => {
   const { clearItems } = useAction();
   const [auth, setAuth] = React.useState(false); //!under development
   const router = useRouter();
-  //@ts-ignore
   const { totalPrice, itemsCart } = useTypedSelector((state) => state.cart);
   const totalCount = itemsCart.reduce(
     (sum: number, item: any) => sum + item.count,
@@ -53,9 +52,9 @@ const Cart: NextPage = () => {
           <div className={styles.cartWrapper}>
             <div className={styles.cart}>
               <div onClick={onClickClear} className={styles.button_clear}>
-                clear all cart
+                Empty the trash
               </div>
-              {itemsCart.map((item) => (
+              {itemsCart.map((item: any) => (
                 <CartItem key={item.date} item={item} {...item} />
               ))}
             </div>
